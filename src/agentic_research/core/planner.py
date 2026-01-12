@@ -1,19 +1,43 @@
-class ExperimentPlanner:
-    def __init__(self):
-        pass
+"""
+Core experiment planning logic (Phase 4).
+Deterministic, no AI calls yet.
+"""
 
-    def generate_plan(self, problem: str, dataset: str | None = None) -> dict:
+from typing import Dict, List, Optional
+
+
+class ExperimentPlanner:
+    def generate_plan(
+        self,
+        problem: str,
+        dataset: Optional[str] = None,
+    ) -> Dict:
+        """
+        Generate a deterministic experiment plan (Phase 4).
+        """
+
         hypothesis = (
             f"If we apply machine learning techniques to '{problem}', "
-            f"we expect measurable improvement over naive baselines."
+            "we expect measurable improvement over naive baselines."
         )
+
+        baselines: List[str] = [
+            "Majority class",
+            "Simple heuristic",
+        ]
+
+        metrics: List[str] = [
+            "Accuracy",
+            "Precision",
+            "Recall",
+        ]
 
         return {
             "problem": problem,
             "dataset": dataset,
             "hypothesis": hypothesis,
-            "baselines": ["Majority class", "Simple heuristic"],
-            "metrics": ["Accuracy", "Precision", "Recall"],
-            "notes": "Deterministic hypothesis generation (Phase 4.2)",
+            "baselines": baselines,
+            "metrics": metrics,
+            "notes": "Deterministic hypothesis generation (Phase 4)",
         }
 
