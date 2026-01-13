@@ -1,0 +1,24 @@
+# Experiment Plan
+
+## Problem
+{{ problem }}
+
+## Dataset
+{{ dataset or "Not specified" }}
+
+## Hypothesis
+{{ hypothesis }}
+
+## Baselines
+{% for baseline in baselines %}
+- {{ baseline }}
+{% endfor %}
+
+## Metrics
+{% for metric in metrics %}
+- {{ metric }}
+{% endfor %}
+
+## Notes
+{{ notes }}
+
