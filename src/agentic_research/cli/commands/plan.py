@@ -7,8 +7,13 @@ from agentic_research.core.validator import validate_inputs
 @click.command(help="Generate a research experiment plan.")
 @click.option("--problem", required=True, help="Research problem statement")
 @click.option("--dataset", help="Dataset description")
+@click.option(
+    "--ai-hypothesis",
+    "ai_hypothesis",
+    help="AI-generated hypothesis (e.g. from Kiro)",
+)
 @click.option("--output", help="Write plan to markdown file")
-def plan(problem, dataset, output):
+def plan(problem, dataset, ai_hypothesis, output):
     # 🔎 Validation
     validation = validate_inputs(problem, dataset)
 
@@ -20,11 +25,15 @@ def plan(problem, dataset, output):
             click.echo(f" Error: {error}")
         raise SystemExit(1)
 
-    #  Planning
+    # 🧪 Planning
     planner = ExperimentPlanner()
-    plan_data = planner.generate_plan(problem, dataset)
+    plan_data = planner.generate_plan(
+        problem=problem,
+        dataset=dataset,
+        ai_hypothesis=ai_hypothesis,
+    )
 
-    #  Output
+    # 📄 Output
     if output:
         from agentic_research.utils.render import render_markdown
 
