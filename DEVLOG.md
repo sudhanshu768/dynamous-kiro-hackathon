@@ -1,32 +1,43 @@
-# Development Log – Agentic Research Engineer
+# DEVLOG — Agentic Research Engineer CLI
 
-## Phase 1–2: Foundation
-- Designed CLI-based tool using Python and Click
-- Established clean project structure and packaging
-- Focused on usability and extensibility
+## Day 1 – Project Setup
+- Cloned Dynamous × Kiro hackathon template
+- Defined project goal: convert research ideas into structured experiment plans
+- Set up Python CLI using Click
+- Established deterministic-first design philosophy
 
-## Phase 3–4: Experiment Planning
-- Implemented deterministic experiment planner
-- Defined hypothesis, baselines, and metrics generation
-- Ensured logic works without AI
+## Day 2 – Core CLI & Planning Logic
+- Implemented `agentic-research plan` command
+- Built deterministic experiment planner
+- Added input validation with warnings and errors
+- Ensured tool works without datasets or AI dependency
 
-## Phase 5–6: Output & Rendering
-- Added markdown rendering using Jinja2 templates
-- Implemented --output flag to save experiment plans
-- Validated output format for research documentation
+## Day 3 – Markdown Rendering & Output
+- Designed Jinja2 template for experiment plans
+- Implemented markdown rendering pipeline
+- Fixed rendering bug where output file was empty
+- Verified correct file generation
 
-## Phase 7: AI Integration (Kiro)
-- Used Kiro CLI to generate research hypotheses
-- Discovered limitations of fully automating Kiro CLI calls
-- Intentionally adopted human-in-the-loop AI workflow
-- Ensured AI enhances ideation without breaking reliability
+## Day 4 – AI-Assisted Ideation with Kiro
+- Used Kiro CLI to brainstorm research hypotheses
+- Adopted human-in-the-loop workflow:
+  - AI assists ideation
+  - Deterministic logic ensures reproducibility
+- Decided not to auto-execute AI calls to preserve reliability
 
-## Key Challenges
-- Balancing automation with robustness
-- Handling interactive AI tooling safely
-- Designing AI usage that aligns with hackathon goals
+## Key Design Decisions
+- Deterministic fallback is always available
+- AI is optional and assistive, never required
+- Tool focuses on planning, not training or execution
 
-## Final Outcome
-A reliable research planning tool that demonstrates
-practical, transparent, and responsible AI-assisted development.
+## Challenges Faced
+- CLI argument validation edge cases
+- Markdown rendering bug (empty output)
+- Integrating AI ideas without breaking determinism
+
+## How Kiro Was Used
+- Hypothesis generation
+- Experiment design refinement
+- Debugging assistance
+- Documentation improvement
 
