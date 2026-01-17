@@ -1,23 +1,23 @@
 """
-Render experiment plans to Markdown using Jinja2.
+Markdown rendering utilities for experiment plans.
 """
 
-from pathlib import Path
 from jinja2 import Environment, FileSystemLoader
+from pathlib import Path
 
 
-def render_experiment_plan(plan: dict, output_path: Path) -> None:
+def render_markdown(plan_data: dict, output_path: str) -> None:
     """
-    Render experiment plan dictionary into a markdown file.
+    Render an experiment plan to a markdown file using Jinja2 template.
     """
 
-    env = Environment(
-        loader=FileSystemLoader("templates/experiment_templates"),
-        autoescape=False,
-    )
+    template_dir = Path("templates/experiment_templates")
+    env = Environment(loader=FileSystemLoader(template_dir))
 
     template = env.get_template("experiment.md.j2")
-    rendered = template.render(**plan)
 
-    output_path.write_text(rendered, encoding="utf-8")
+    rendered = template.render(plan=plan_data)
+
+    with open(output_path, "w", encoding="utf-8") as f:
+        f.write(rendered)
 
